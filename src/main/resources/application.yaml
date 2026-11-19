@@ -1,0 +1,38 @@
+s3:
+  endpoint: http://localhost:9000
+  public-base-url: http://10.0.2.2:9000
+  presign-endpoint: http://10.0.2.2:9000
+  accessKey: root
+  secretKey: minioroot
+  region: us-east-1
+  bucket: social-images
+  presign-ttl-minutes: 10
+
+jwt:
+  secret: houzzkajsdfkljsdaklfjsaklsdafhasdfjsdjfghsjaf
+  ttl: PT720H   # 30 days
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/social
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: false
+  flyway:
+    enabled: true
+    baseline-on-migrate: false
+    locations: classpath:db/migration
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.houzz.social: INFO
